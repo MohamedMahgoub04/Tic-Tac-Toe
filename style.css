@@ -2,11 +2,10 @@
 
 
 :root{
- --win: rgb(186, 219, 204);
- --lose: rgb(245, 194, 199);
+ --main: rgb(186, 219, 204);
  --grey-light: #e9ecef;
  --white: #ffffff;
- --black: #212529;
+ --black: rgb(33, 37, 41);
 }
 *{
  /* border: 1px solid purple; */
@@ -22,23 +21,18 @@ body{
  align-items: center;
  background-color: var(--grey-light);
 }
-#container{
- display: flex;
- flex-direction: row;
- justify-content: space-around;
-}
-.player{
+.wrapper{
  display: flex;
  flex-direction: column;
+ justify-content: center;
  align-items: center;
 }
-button{
- width: 40px;
- height: 40px;
- font-size: 20px;
+
+h1{
+ letter-spacing: 0.5px;
+ color: var(--black);
+ margin-top: 10vh;
 }
-
-
 
 #grid{
  margin: 50px auto 0;
@@ -54,19 +48,12 @@ button{
  transition: 0.1s;
  background-color: var(--white);
  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1) , 0px 1px 2px 0px rgba(0,0,0,0.06) ;
- width: 125px;
- height: 125px;
  border-radius: 8px;
 }
 .box:hover{
  transition: 0.1s;
  transform: scale(1.05);
 }
-h1{
- color: var(--black);
- margin-top: 10vh;
-}
-
 .mark{
  cursor: default;
  color: var(--black);
@@ -77,10 +64,14 @@ h1{
  background-color: transparent;
 }
 
+#result-div{
+ height: 64px;
+ margin: 2rem;
+}
 .result{
  width: 395px;
  height: 3rem;
- background-color: var(--win);
+ background-color: var(--main);
  border-radius: 8px;
  display: flex;
  align-items: center;
@@ -94,11 +85,41 @@ h1{
 }
 
 #restart{
+ border-radius: 5px;
  width: 10rem;
- /* margin: 1rem; */
- /* padding: 1rem; */
+ font-size: 20px;
+ padding: 0.75rem ;
+ color: var(--white);
+ background-color:rgb(33, 37, 41, 0.9);
+ border: 1px solid rgb(33, 37, 41, 0.9);
 }
-#result-div{
- height: 64px;
- margin: 2rem;
+#restart:hover{
+ color: var(--white);
+ background-color: rgb(33, 37, 41, 0.8);
+ border: 1px solid rgb(33, 37, 41, 0.8);
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 600px){
+ *{
+  margin: 0 !important; 
+ }
+ #grid{
+  margin-top: 2rem;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: min(420px, 90vw);
+  height: min(420px, 90vw);
+ }
+ .wrapper{
+  height: 100vh;
+  gap: 1.5rem;
+ }
+ .mark{
+  font-size: min(90px, 20vw);
+ }
+ .result{
+  width: min(420px, 90vw);
+ }
+
 }
